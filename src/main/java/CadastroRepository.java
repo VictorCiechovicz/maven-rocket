@@ -60,7 +60,7 @@ public class CadastroRepository {
 
     public List<Cadastro> listarCadastros() {
         List<Cadastro> lista = new ArrayList<>();
-        Cadastro cadastro = new Cadastro();
+
         try {
             String sql = "SELECT nome, idade, id FROM public.tab_cadastro";
             PreparedStatement pst = conexao.prepareStatement(sql);
@@ -68,9 +68,11 @@ public class CadastroRepository {
             ResultSet results = pst.executeQuery();
 
             while (results.next()) {
-                int id = results.getInt("id");
+                Integer id = results.getInt("id");
                 String nome = results.getString("nome");
-                int idade = results.getInt("idade");
+                Integer idade = results.getInt("idade");
+
+                Cadastro cadastro = new Cadastro();
                 cadastro.setId(id);
                 cadastro.setNome(nome);
                 cadastro.setIdade(idade);

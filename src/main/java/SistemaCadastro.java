@@ -28,7 +28,7 @@ public class SistemaCadastro {
         //Listar
         List<Cadastro> lista = cadastroRepository.listarCadastros();
         for (Cadastro c : lista) {
-            System.out.println(c.getNome());
+            System.out.println("ID:" + c.getId() + " Nome:" + c.getNome());
         }
 
     }
