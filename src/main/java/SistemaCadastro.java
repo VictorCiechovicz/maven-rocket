@@ -25,11 +25,16 @@ public class SistemaCadastro {
         // Excluir
         // cadastroRepository.excluir(1);
 
-        //Listar
-        List<Cadastro> lista = cadastroRepository.listarCadastros();
+        //Listar todos
+       /* List<Cadastro> lista = cadastroRepository.listarCadastros();
         for (Cadastro c : lista) {
             System.out.println("ID:" + c.getId() + " Nome:" + c.getNome());
         }
+*/
+        //Listar por id
+        Cadastro resp = cadastroRepository.buscar(3);
+        System.out.println("ID:" + resp.getId() + " Nome:" + resp.getNome());
+
 
     }
 }

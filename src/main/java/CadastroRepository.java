@@ -1,7 +1,6 @@
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,6 +87,38 @@ public class CadastroRepository {
         }
 
         return lista;
+    }
+
+    public Cadastro buscar(Integer id) {
+
+        Cadastro cadastro = null;
+
+        try {
+            String sql = "SELECT nome, idade, id FROM public.tab_cadastro WHERE id=?";
+            PreparedStatement pst = conexao.prepareStatement(sql);
+            pst.setInt(1, id);
+
+            ResultSet results = pst.executeQuery();
+            if (results.next()) {
+
+                Integer ID = results.getInt("id");
+                String nome = results.getString("nome");
+                Integer idade = results.getInt("idade");
+
+                cadastro = new Cadastro();
+
+                cadastro.setId(ID);
+                cadastro.setNome(nome);
+                cadastro.setIdade(idade);
+
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return cadastro;
     }
 
 
